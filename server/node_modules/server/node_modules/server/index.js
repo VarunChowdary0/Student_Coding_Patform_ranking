@@ -49,9 +49,14 @@ app.post("/get-placement-info",(req,res)=>{
     const CompanyName = req.body.companyName;
     const Batch = req.body.Batch;
     console.log(CompanyName,Batch)
+    const st1 = "SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE CompanyName = (:CompanyName) AND Pass_Out_Batch = (:Batch) ;";
+    const st2 = "SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE Pass_Out_Batch = (:Batch) ;"
+
+    const args1 ={CompanyName:CompanyName,Batch:Batch}    ;
+    const args2 = {Batch:Batch}    ;
     turso.execute({
-        sql:"SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE CompanyName = (:CompanyName) AND Pass_Out_Batch = (:Batch) ;",
-        args:{CompanyName:CompanyName,Batch:Batch}
+        sql: "ALLCOMPANIES"===String(CompanyName).toUpperCase()?st2:st1,
+        args:"ALLCOMPANIES"===String(CompanyName).toUpperCase()?args2:args1
     })
     // turso.execute("SELECT RollNumber,StudentName,CompanyName,Package FROM PlacementsTable WHERE CompanyName='TCS' AND Pass_Out_Batch = 2024 ;")
         .then((data)=>{
@@ -68,8 +73,6 @@ app.post("/get-details",(req,res)=>{
     console.log("--------------------------------------------");
     const CompanyName = req.body.companyName;
     const rollNumber  = req.body.rollNo;
-
-    console.log(CompanyName,rollNumber)
     turso.execute({
         sql:"SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE RollNumber = (:rollNo) AND  CompanyName = (:CompanyName) ;",
         args:{rollNo:rollNumber,CompanyName:CompanyName}
@@ -86,6 +89,27 @@ app.post("/get-details",(req,res)=>{
 
     console.log("------------------------------------------")
 })
+
+app.post("/get-companyNames",(req,res)=>{
+    const Cname = req.body['Cname'];
+    console.log(Cname)
+
+    turso.execute({
+        sql: "SELECT DISTINCT CompanyName FROM PlacementsTable WHERE CompanyName LIKE :Cname",
+        args: { Cname: `%${Cname}%` } 
+    })
+    .then((data)=>{
+        console.log(data.rows);
+        res.status(200).json({data:data.rows});
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.status(400).json({data:"Error Occured"});
+    })
+
+})
+
+
 
 app.post("/update-details", (req, res) => {
     console.log("--------------------------------------------");
@@ -117,6 +141,30 @@ app.post("/update-details", (req, res) => {
 
     console.log("------------------------------------------");
 });
+
+app.post("/insert-placements",(req,res)=>{
+    const rollNo = req.body['rollNumber']
+    const Sname = req.body['StudentName']
+    const Cname = req.body['CompanyName']
+    const package =req.body['Package']
+    const Batch = req.body['Batch']
+    console.log(rollNo,Sname,Cname,package,Batch);
+
+    turso.execute({
+        sql: "INSERT INTO PlacementsTable (RollNumber, StudentName, CompanyName, Package, Pass_Out_Batch) VALUES (:rollNo, :Sname, :Cname, :package, :Batch);",
+        args: { rollNo: rollNo, Sname: Sname, Cname: Cname, package: package, Batch: Batch }
+    })
+        .then((data) => {
+            console.log(data);
+            res.status(200).json({ data: "Placement Successfully Added" });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(400).json({ data: err });
+        });
+    
+
+})
 
 
 app.listen(PORT,()=>{
