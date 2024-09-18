@@ -172,6 +172,25 @@ app.post("/insert-placements",(req,res)=>{
 
 })
 
+app.post("delete-record",(req,res)=>{
+    console.log("Rout: '/delete-record'");
+    const CompanyName = req.body.companyName;
+    const rollNumber  = req.body.rollNo;
+
+    console.log(CompanyName,rollNumber);
+    turso.execute({
+        sql:"DELETE FROM PlacementsTable Where RollNumber = (:rollNo) AND  CompanyName = (:CompanyName) ;",
+        args:{rollNo:rollNumber,CompanyName:CompanyName}
+    })
+    .then((data)=>{
+        res.status(200).json({data:"DELETED"});
+    })
+    .catch((err)=>{
+        res.status(400).json({data:"Failed"});
+    })
+    
+})
+
 
 app.listen(PORT,()=>{
     console.log(`Server running on PORT ${PORT}..`)
