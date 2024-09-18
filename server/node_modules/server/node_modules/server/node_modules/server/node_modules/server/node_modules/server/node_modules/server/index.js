@@ -33,7 +33,9 @@ INSERT INTO
 VALUES
 ();
 `;
+
 app.get("/",(req,res)=>{
+    console.log("Rout: '/'")
     turso.execute(`SELECT * FROM PlacementsTable`)
         .then((data)=>{
             console.log(data.rows);
@@ -45,6 +47,7 @@ app.get("/",(req,res)=>{
 });
 
 app.post("/get-placement-info",(req,res)=>{
+    console.log("Rout: '/get-placement-info'")
     console.log("-------------------------------------------------")
     const CompanyName = req.body.companyName;
     const Batch = req.body.Batch;
@@ -70,6 +73,7 @@ app.post("/get-placement-info",(req,res)=>{
 })
 
 app.post("/get-details",(req,res)=>{
+    console.log("Rout: '/get-details'")
     console.log("--------------------------------------------");
     const CompanyName = req.body.companyName;
     const rollNumber  = req.body.rollNo;
@@ -92,8 +96,8 @@ app.post("/get-details",(req,res)=>{
 
 app.post("/get-companyNames",(req,res)=>{
     const Cname = req.body['Cname'];
-    console.log(Cname)
-
+    // console.log(Cname)
+    console.log("Rout: '/get-companyNames'")
     turso.execute({
         sql: "SELECT DISTINCT CompanyName FROM PlacementsTable WHERE CompanyName LIKE :Cname",
         args: { Cname: `%${Cname}%` } 
@@ -112,10 +116,11 @@ app.post("/get-companyNames",(req,res)=>{
 
 
 app.post("/update-details", (req, res) => {
+    console.log("Rout: '/update-details'")
     console.log("--------------------------------------------");
     const { companyName, rollNo, name, packageAmount } = req.body;
 
-    console.log(companyName, rollNo, name, packageAmount);
+    // console.log(companyName, rollNo, name, packageAmount);
 
     turso.execute({
         sql: `
@@ -143,6 +148,7 @@ app.post("/update-details", (req, res) => {
 });
 
 app.post("/insert-placements",(req,res)=>{
+    console.log("Rout: '/insert-placements'")
     const rollNo = req.body['rollNumber']
     const Sname = req.body['StudentName']
     const Cname = req.body['CompanyName']
