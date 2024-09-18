@@ -68,7 +68,7 @@ app.post("/get-placement-info",(req,res)=>{
         })
         .catch((err)=>{
             console.log(err);
-            res.status(500);
+            res.status(500).json({error:err.message});
         })
 })
 
@@ -86,8 +86,8 @@ app.post("/get-details",(req,res)=>{
         res.status(200).json({data:outPut});
     })
     .catch((err)=>{
-        console.log(err);
-        res.status(500);
+        console.log(err.message);
+        res.status(500).json({error:err.message});
     })
 
     console.log("------------------------------------------")
@@ -106,7 +106,7 @@ app.post("/get-companyNames",(req,res)=>{
         res.status(200).json({data:data.rows});
     })
     .catch((err)=>{
-        console.log(err);
+        console.log(err.message);
         res.status(400).json({data:"Error Occured"});
     })
 
@@ -138,7 +138,7 @@ app.post("/update-details", (req, res) => {
         res.status(200).json({ message: "Details updated successfully" });
     })
     .catch((err) => {
-        console.log(err);
+        console.log(err.message);
         res.status(500).json({ error: "An error occurred while updating details" });
     });
 
@@ -185,10 +185,11 @@ app.post("/delete-record", (req, res) => {
         args: { rollNo: rollNumber, CompanyName: CompanyName }
     })
     .then(() => {
+        console.log(rollNumber+" Deleted")
         res.status(200).json({ data: "DELETED" });
     })
     .catch((err) => {
-        console.error("Error deleting record:", err);
+        console.error(rollNumber,"Error deleting record:", err);
         res.status(400).json({ data: "Failed to delete record", error: err.message });
     });
 });
