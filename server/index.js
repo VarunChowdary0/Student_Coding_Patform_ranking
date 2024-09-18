@@ -74,7 +74,6 @@ app.post("/get-placement-info",(req,res)=>{
 
 app.post("/get-details",(req,res)=>{
     console.log("Rout: '/get-details'")
-    console.log("--------------------------------------------");
     const CompanyName = req.body.companyName;
     const rollNumber  = req.body.rollNo;
     turso.execute({
@@ -117,7 +116,6 @@ app.post("/get-companyNames",(req,res)=>{
 
 app.post("/update-details", (req, res) => {
     console.log("Rout: '/update-details'")
-    console.log("--------------------------------------------");
     const { companyName, rollNo, name, packageAmount } = req.body;
 
     // console.log(companyName, rollNo, name, packageAmount);
@@ -144,7 +142,6 @@ app.post("/update-details", (req, res) => {
         res.status(500).json({ error: "An error occurred while updating details" });
     });
 
-    console.log("------------------------------------------");
 });
 
 app.post("/insert-placements",(req,res)=>{
@@ -172,24 +169,30 @@ app.post("/insert-placements",(req,res)=>{
 
 })
 
-app.post("delete-record",(req,res)=>{
-    console.log("Rout: '/delete-record'");
-    const CompanyName = req.body.companyName;
-    const rollNumber  = req.body.rollNo;
-
-    console.log(CompanyName,rollNumber);
-    turso.execute({
-        sql:"DELETE FROM PlacementsTable Where RollNumber = (:rollNo) AND  CompanyName = (:CompanyName) ;",
-        args:{rollNo:rollNumber,CompanyName:CompanyName}
-    })
-    .then((data)=>{
-        res.status(200).json({data:"DELETED"});
-    })
-    .catch((err)=>{
-        res.status(400).json({data:"Failed"});
-    })
+app.post("/delete-record", (req, res) => {
+    console.log("Route: '/delete-record'");
     
-})
+    const { companyName: CompanyName, rollNo: rollNumber } = req.body;
+
+    if (!CompanyName || !rollNumber) {
+        return res.status(400).json({ data: "Company Name and Roll Number are required." });
+    }
+
+    console.log(CompanyName, rollNumber);
+    
+    turso.execute({
+        sql: "DELETE FROM PlacementsTable WHERE RollNumber = (:rollNo) AND CompanyName = (:CompanyName);",
+        args: { rollNo: rollNumber, CompanyName: CompanyName }
+    })
+    .then(() => {
+        res.status(200).json({ data: "DELETED" });
+    })
+    .catch((err) => {
+        console.error("Error deleting record:", err);
+        res.status(400).json({ data: "Failed to delete record", error: err.message });
+    });
+});
+
 
 
 app.listen(PORT,()=>{
