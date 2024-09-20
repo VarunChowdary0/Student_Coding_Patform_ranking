@@ -1,0 +1,373 @@
+
+CREATE TABLE IF NOT EXISTS
+	StudentDetails(
+		RollNumber VARCHAR(10) PRIMARY KEY,
+        SName VARCHAR(256),
+        CurrentSection CHAR(1),
+        CurrentSem INT(1) CHECK ( CurrentSem BETWEEN 1 AND 8)
+    );
+
+INSERT INTO StudentDetails (RollNumber, SName, CurrentSection, CurrentSem)
+VALUES
+  ('22951A0580', 'BATTULA KIRAN SREE', 'B', 5),
+  ('22951A0581', 'KOLLA KOUSHIKA', 'B', 5),
+  ('22951A0582', 'MUDIGONDA KOUSHIKA', 'B', 5),
+  ('22951A0583', 'VEGGALAM KRANTHI KUMAR', 'B', 5),
+  ('22951A0585', 'KEMMASARAM KRUTHIKA', 'B', 5),
+  ('22951A0587', 'KOWKUTLA KUSHANTH REDDY', 'B', 5),
+  ('22951A0588', 'KUSHI SHETTY', 'B', 5),
+  ('22951A0591', 'AMBATI LEELA LOHITH REDDY', 'B', 5),
+  ('22951A0592', 'SIVAPURAM LIKHITHA', 'B', 5),
+  ('22951A0593', 'EMANI LIKITH SAI REDDY', 'B', 5),
+  ('22951A0594', 'T LIPIKA REDDY', 'B', 5),
+  ('22951A0595', 'BHUPATHI MADAN MOHAN', 'B', 5),
+  ('22951A0598', 'ADE MANASA', 'B', 5),
+  ('22951A05A1', 'YENIGALLA MANJUSREE', 'B', 5),
+  ('22951A05A2', 'SHAHISNU MANOHAR', 'B', 5),
+  ('22951A05A5', 'GALI MARY ASHRITHA SHOWRY', 'B', 5),
+  ('22951A05A6', 'ARUMILLI MAYANKA MOULI', 'B', 5),
+  ('22951A05A8', 'MOHAMMAD HARSHAD PASHA', 'B', 5),
+  ('22951A05A9', 'MOHAMMED MUSAVVIR AHMED', 'B', 5),
+  ('22951A05B0', 'CHITLAPELLI MOHAN', 'B', 5),
+  ('22951A05B3', 'MOUNIKA MAHWAR', 'B', 5),
+  ('22951A05B5', 'MUSKAAN FATIMA', 'B', 5),
+  ('22951A05B6', 'R NAGA PRANAV', 'B', 5),
+  ('22951A05B7', 'JAMPALA NAGA SAI', 'B', 5),
+  ('22951A05B8', 'MANEPALLI NANDINI DURGA', 'B', 5),
+  ('22951A05B9', 'GURRAM NANDINI', 'B', 5),
+  ('22951A05C1', 'GOLLA NIHAR', 'B', 5),
+  ('22951A05C2', 'CHITTURI NIHARIKA', 'B', 5),
+  ('22951A05C4', 'RUDRAPATI NIKHIL', 'B', 5),
+  ('22951A05C6', 'NIKHITHA KALAKUNTLA', 'B', 5),
+  ('22951A05C9', 'SWARNA NITISH KUMAR REDDY', 'B', 5),
+  ('22951A05D4', 'AIREDDY PAUL ANURAG', 'B', 5),
+  ('22951A05D8', 'POREDDY PHANINDRA REDDY', 'B', 5),
+  ('22951A05D9', 'KUNAPAREDDY POORNA SAI', 'B', 5),
+  ('22951A05E0', 'MUTHYALA PRABHAS', 'B', 5),
+  ('22951A05E1', 'VOOKANTI PRACHETHAN REDDY', 'B', 5),
+  ('22951A05E3', 'GEEDIPALLY PUJITHA REDDY', 'B', 5),
+  ('22951A05E4', 'ATHIMYALA RAHULREDDY', 'B', 5),
+  ('22951A05E5', 'CHOUDHARY RAJESH', 'B', 5),
+  ('22951A05E6', 'T RAJESH', 'B', 5),
+  ('22951A05E7', 'GUNAGANTI REVAN KUMAR', 'B', 5),
+  ('22951A05E8', 'GANGAPUR REVANTH RAJ', 'B', 5),
+  ('22951A05F1', 'ANUGANDULA RISHIKA', 'B', 5),
+  ('22951A05F2', 'KAPARTHI RISHITH GUPTHA', 'B', 5),
+  ('22951A05F3', 'MANDELA RISHITH NAGA SRINIVAS', 'B', 5),
+  ('22951A05F4', 'KATARAPU RONEY MOON', 'B', 5),
+  ('22951A05F5', 'ROWTHU GOPICHAND', 'B', 5),
+  ('22951A05F9', 'PRASHANTH SAI BALAJI MAGULURI', 'B', 5),
+  ('22951A05G0', 'TENKATI SAI BALAJI', 'B', 5),
+  ('22951A05G1', 'KUNDURU SAI CHARAN', 'B', 5),
+  ('22951A05G3', 'MOKALA SAI LOHITH', 'B', 5),
+  ('22951A05G4', 'THOLEM SAI PRASANNA', 'B', 5),
+  ('22951A05G5', 'PENUGONDA SAI RAGHU RAM', 'B', 5),
+  ('22951A05G6', 'SHIRAMSETTI SAI TEJA', 'B', 5),
+  ('22951A05G7', 'SIRIKONDA SAI VAMSI', 'B', 5),
+  ('22951A05G8', 'POLUDASU SAI VARUN', 'B', 5),
+  ('22951A05G9', 'KANAPARTHI SAIKIRAN', 'B', 5),
+  ('22951A05H0', 'SAKETH SRI HARSHA A N', 'B', 5),
+  ('22951A05H1', 'CHOKKAM SAKETH VARMA', 'B', 5),
+  ('22951A05H4', 'POLA REDDY SANJANA', 'B', 5),
+  ('22951A05H6', 'RAVULA SATHVIKA', 'B', 5),
+  ('22955A0511', 'PODETI HARSHAVARDHAN', 'B', 5),
+  ('22955A0512', 'GARIDEPALLI MAHESH RAJA', 'B', 5),
+  ('22955A0513', 'E MITHEEL', 'B', 5),
+  ('22955A0516', 'LINGAM PRASHANTH', 'B', 5),
+  ('22955A0519', 'RAPOLU RAHUL', 'B', 5),
+  ('22955A0521', 'VAIDA RAMYA', 'B', 5);
+  
+select * from StudentDetails;
+
+
+CREATE TABLE IF NOT EXISTS
+	Class_Schedule(
+		Department VARCHAR(256),
+        Semester INT(1) CHECK ( SEMESTER BETWEEN 1 AND 8),
+        Section CHAR(1),
+        Week_Day VARCHAR(10),
+        Period1 VARCHAR(256),
+        Period2 VARCHAR(256),
+        Period3 VARCHAR(256),
+        Period4 VARCHAR(256),
+        Period5 VARCHAR(256),
+        Period6 VARCHAR(256),
+        PRIMARY KEY ( Department , Semester , Section , Week_Day )
+	);
+    
+INSERT INTO Class_Schedule (Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
+VALUES
+-- Section A
+('Computer Science and Engineering', 5, 'A', 'Monday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'CN|IARE11088|1301', 'OOSE|IARE10216|1301', 'IP|IARE10757|1301'),
+('Computer Science and Engineering', 5, 'A', 'Tuesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'WAD LABORATORY|IARE10686|1115', 'WAD LABORATORY|IARE10686|1115', 'LIBRARY / HCI|IARE10556|2101'),
+('Computer Science and Engineering', 5, 'A', 'Wednesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'CD|IARE10957|1206', 'OOSD LABORATORY|IARE10216|2006', 'OOSD LABORATORY|IARE10216|2006'),
+('Computer Science and Engineering', 5, 'A', 'Thursday', 
+ 'IP|IARE10757|1110', 'OOSE|IARE10216|1110', 'CD|IARE10957|1110', 'WAD|IARE10686|1101', 'WAD|IARE10686|1101', 'CN|IARE11088|1101'),
+('Computer Science and Engineering', 5, 'A', 'Friday', 
+ 'OOSE|IARE10216|1402', 'PBL LABORATORY|IARE10850|2006', 'PBL LABORATORY|IARE10850|2006', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('Computer Science and Engineering', 5, 'A', 'Saturday', 
+ 'IP|IARE10757|1108', 'CD|IARE10957|1108', 'CN|IARE11088|1108', 'WAD|IARE10686|1211', 'WAD|IARE10686|1211', 'OOSE|IARE10216|1211'),
+
+-- Section B
+('Computer Science and Engineering', 5, 'B', 'Monday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'IP|IARE10846|1403', 'CD|IARE10966|1403', 'OOSE|IARE11139|1403'),
+('Computer Science and Engineering', 5, 'B', 'Tuesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'PBL LABORATORY|IARE10850|1104', 'PBL LABORATORY|IARE10850|1104', 'LIBRARY / HCI|IARE10846|2101'),
+('Computer Science and Engineering', 5, 'B', 'Wednesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'WAD LABORATORY|IARE10996|1104', 'WAD LABORATORY|IARE10996|1104', 'WAD|IARE10996|1206'),
+('Computer Science and Engineering', 5, 'B', 'Thursday', 
+ 'CD|IARE10966|1404', 'OOSE|IARE11139|1404', 'OOSE|IARE11139|1404', 'IP|IARE10846|1108', 'CN|IARE10895|1108', 'CN|IARE10895|1108'),
+('Computer Science and Engineering', 5, 'B', 'Friday', 
+ 'WAD|IARE10996|1206', 'CN|IARE10895|1206', 'IP|IARE10846|1206', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('Computer Science and Engineering', 5, 'B', 'Saturday', 
+ 'CD|IARE10966|1117', 'WAD|IARE10996|1117', 'WAD|IARE10996|1117', 'OOSE|IARE11139|1110', 'OOSD LABORATORY|IARE11139|1115', 'OOSD LABORATORY|IARE11139|1115'),
+
+-- Section C
+('Computer Science and Engineering', 5, 'C', 'Monday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'CD|IARE11090|1218', 'OOSE|IARE10794|1218', 'CN|IARE10846|1218'),
+('Computer Science and Engineering', 5, 'C', 'Tuesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'WAD LABORATORY|IARE10273|2006', 'WAD LABORATORY|IARE10273|2006', 'LIBRARY / HCI|IARE10895|2102'),
+('Computer Science and Engineering', 5, 'C', 'Wednesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'OOSE|IARE10794|1402', 'WAD|IARE10273|1402', 'CD|IARE11090|1402'),
+('Computer Science and Engineering', 5, 'C', 'Thursday', 
+ 'WAD|IARE10273|1403', 'OOSD LABORATORY|IARE10794|2006', 'OOSD LABORATORY|IARE10794|2006', 'CN|IARE10846|1206', 'OOSE|IARE10794|1206', 'IP|IARE10556|1206'),
+('Computer Science and Engineering', 5, 'C', 'Friday', 
+ 'WAD|IARE10273|1204', 'IP|IARE10556|1204', 'OOSE|IARE10794|1204', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('Computer Science and Engineering', 5, 'C', 'Saturday', 
+ 'WAD|IARE10273|1218', 'CD|IARE11090|1218', 'CN|IARE10846|1218', 'IP|IARE10556|1218', 'PBL LABORATORY|IARE10921|2006', 'PBL LABORATORY|IARE10921|2006'),
+
+-- Section D
+('Computer Science and Engineering', 5, 'D', 'Monday', 
+ 'CD|IARE10750|1410', 'CN|IARE11000|1410', 'WAD|IARE10991|1410', 'IP|IARE10044|1410', 'OOSE|IARE10894|1410', 'OOSE|IARE10894|1410'),
+('Computer Science and Engineering', 5, 'D', 'Tuesday', 
+ 'OOSD LABORATORY|IARE10894|2006', 'OOSD LABORATORY|IARE10894|2006', 'OOSD LABORATORY|IARE10894|2006','WAD|IARE10991|1410', 'CN|IARE11000|1410', 'LIBRARY / HCI|IARE10750|2101'),
+('Computer Science and Engineering', 5, 'D', 'Wednesday', 
+ 'IP|IARE10044|1410', 'OOSE|IARE10894|1410', 'CN|IARE11000|1410', 'CD|IARE10750|1410', 'WAD|IARE10991|1410', 'WAD|IARE10991|1410'),
+('Computer Science and Engineering', 5, 'D', 'Thursday', 
+ 'IP|IARE10044|1410', 'CD|IARE10750|1410', 'OOSE|IARE10894|1410', 'WAD LABORATORY|IARE10991|2006', 'WAD LABORATORY|IARE10991|2006', 'WAD LABORATORY|IARE10991|2006'),
+('Computer Science and Engineering', 5, 'D', 'Friday', 
+ 'IP|IARE10044|1410', 'CN|IARE11000|1410', 'WAD|IARE10991|1410', 'OOSE|IARE10894|1410', 'CD|IARE10750|1410', 'SPORTS / HCI|IARE10991|1410'),
+('Computer Science and Engineering', 5, 'D', 'Saturday', 
+ 'PBL LABORATORY|IARE10794|2006', 'PBL LABORATORY|IARE10794|2006','PBL LABORATORY|IARE10794|2006' ,'IP|IARE10044|1410', 'CN|IARE11000|1410', 'CD|IARE10750|1410');
+
+
+
+-- ------------ CSIT
+
+INSERT INTO Class_Schedule (Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
+VALUES
+-- Section A
+('Computer Science and Information Technology', 5, 'A', 'Monday', 
+ 'CD|IARE11049|3416', 'OOSE|IARE10939|3416', 'CN|IARE11021|3416', 'WAD|IARE11012|3416', 'WAD|IARE11012|3416', 'HCI / LIBRARY|GCS / BSS|3416 / 2101'),
+('Computer Science and Information Technology', 5, 'A', 'Tuesday', 
+ 'IP|IARE10963|3416', 'PBL LABORATORY|IARE11052|2103', 'PBL LABORATORY|IARE11052|2103', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('Computer Science and Information Technology', 5, 'A', 'Wednesday', 
+ 'IP|IARE10963|3416', 'CN|IARE11021|3416', 'CD|IARE11049|3416', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('Computer Science and Information Technology', 5, 'A', 'Thursday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'OOSE|IARE10939|3416', 'CD|IARE11049|3416', 'WAD|IARE11012|3416'),
+('Computer Science and Information Technology', 5, 'A', 'Friday', 
+ 'IP|IARE10963|3416', 'CD|IARE11049|3416', 'OOSE|IARE10939|3416', 'CN|IARE11021|3416', 'WAD LABORATORY|IARE11012|2103', 'WAD LABORATORY|IARE11012|2103'),
+('Computer Science and Information Technology', 5, 'A', 'Saturday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'WAD|IARE11012|3416', 'OOSD LABORATORY|IARE10939|2103', 'OOSD LABORATORY|IARE10939|2103'),
+
+-- Section B
+('Computer Science and Information Technology', 5, 'B', 'Monday', 
+ 'PBL LABORATORY|IARE11052|2103', 'PBL LABORATORY|IARE11052|2103', 'PBL LABORATORY|IARE11052|2103', 'CD|IARE11071|3408', 'OOSE|IARE10941|3408', 'HCI/LIBRARY|IARE11021|3416'),
+('Computer Science and Information Technology', 5, 'B', 'Tuesday', 
+ 'CN/CNS|IARE11052/IARE11071|3408/1418', 'IP|IARE10706|3408', 'OOSE|IARE10941|3408', 'CD|IARE11071|3408', 'WAD|IARE10917|3408', 'WAD|IARE10917|3408'),
+('Computer Science and Information Technology', 5, 'B', 'Wednesday', 
+ 'IP|IARE10706|3408', 'OOSE|IARE10941|3408', 'WAD|IARE10917|3408', 'WAD LABORATORY|IARE10917|2103', 'WAD LABORATORY|IARE10917|2103', 'WAD LABORATORY|IARE10917|2103'),
+('Computer Science and Information Technology', 5, 'B', 'Thursday', 
+ 'IP|IARE10706|3408', 'CD|IARE11071|3408', 'CN/CNS|IARE11052/IARE11071|3408/1418', 'OOSD LABORATORY|IARE10941|2103', 'OOSD LABORATORY|IARE10941|2103', 'OOSD LABORATORY|IARE10941|2103'),
+('Computer Science and Information Technology', 5, 'B', 'Friday', 
+ 'WAD|IARE10917|3408', 'IP|IARE10706|3408', 'CN/CNS|IARE11052/IARE11071|3408/1418', 'CD|IARE11071|3408', 'OOSE|IARE10941|3408', 'HCI/SPORTS|IARE11021|7009'),
+('Computer Science and Information Technology', 5, 'B', 'Saturday', 
+ 'OOSE|IARE10941|3408', 'WAD|IARE10917|3408', 'IP|IARE10706|3408', 'CD|IARE11071|3408', 'CN/CNS|IARE11052/IARE11071|3408/1418', 'CN/CNS|IARE11052/IARE11071|3408/1418');
+ 
+ -- ECE 
+ 
+ INSERT INTO Class_Schedule (Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
+VALUES
+-- Section A
+('Electronics and Communication Engineering', 5, 'A', 'Monday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'CMC|IARE11084|1309', 'PBL|IARE11084|1212', 'PBL|IARE11084|1212'),
+('Electronics and Communication Engineering', 5, 'A', 'Tuesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'MPMC|IARE10882|1309', 'VI LABORATORY|IARE10683|1212', 'VI LABORATORY|IARE10683|1212'),
+('Electronics and Communication Engineering', 5, 'A', 'Wednesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'CS|IARE10624|1309', 'EMI|IARE10574|1309', 'AWP|IARE10584|1309'),
+('Electronics and Communication Engineering', 5, 'A', 'Thursday', 
+ 'CMC|IARE11084|1309', 'MPMC LABORATORY|IARE10683|1212','MPMC LABORATORY|IARE10683|1212',  'MPMC|IARE10882|1309', 'CS|IARE10624|1309', 'LIBRARY|IARE11084|1309'),
+('Electronics and Communication Engineering', 5, 'A', 'Friday', 
+ 'EMI|IARE10574|1309', 'CS|IARE10624|1309', 'AWP|IARE10584|1309', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('Electronics and Communication Engineering', 5, 'A', 'Saturday', 
+ 'CS|IARE10624|1309', 'MPMC|IARE10882|1309', 'AWP|IARE10584|1309', 'EMI|IARE10574|1309', 'MPMC|IARE10882|1309', 'CMC|IARE11084|1309'),
+
+-- Section B
+('Electronics and Communication Engineering', 5, 'B', 'Monday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'AWP|IARE10817|1311', 'MPMC|IARE10053|1311', 'EMI|IARE10683|1311'),
+('Electronics and Communication Engineering', 5, 'B', 'Tuesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'CS|IARE10696|1311', 'MPMC|IARE10053|1311', 'CMC|IARE10584|1311'),
+('Electronics and Communication Engineering', 5, 'B', 'Wednesday', 
+ 'Placement and Training', 'Placement and Training', 'Placement and Training', 'CS|IARE10696|1311', 'MPMC LABORATORY|IARE10053|1312B', 'MPMC LABORATORY|IARE10053|1312B'),
+('Electronics and Communication Engineering', 5, 'B', 'Thursday', 
+ 'MPMC|IARE10053|1311', 'AWP|IARE10817|1311', 'CS|IARE10696|1311', 'CMC|IARE10584|1311', 'EMI|IARE10683|1311', 'LIBRARY|IARE10683|1311'),
+('Electronics and Communication Engineering', 5, 'B', 'Friday', 
+ 'CMC|IARE10584|1311', 'VI LABORATORY|IARE10683|1312B','VI LABORATORY|IARE10683|1312B', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('Electronics and Communication Engineering', 5, 'B', 'Saturday', 
+ 'PBL|IARE10683|1212','PBL|IARE10683|1212', 'EMI|IARE10683|1311', 'MPMC|IARE10053|1311', 'AWP|IARE10817|1311', 'CS|IARE10696|1311'),
+
+-- Section C
+('Electronics and Communication Engineering', 5, 'C', 'Monday', 
+ 'AWP|IARE10947|1305', 'AWP|IARE10947|1305', 'MPMC|IARE10690|1305', 'WCN|IARE11103|1305', 'EMI|IARE10953|1305', 'LIBRARY|IARE10690|2104'),
+('Electronics and Communication Engineering', 5, 'C', 'Tuesday', 
+ 'PBL|IARE11126|1212','PBL|IARE11126|1212','PBL|IARE11126|1212', 'CS|IARE10795|1305', 'WCN|IARE11103|1305', 'MPMC|IARE10690|1305'),
+('Electronics and Communication Engineering', 5, 'C', 'Wednesday', 
+ 'VI LABORATORY|IARE10865|1212','VI LABORATORY|IARE10865|1212','VI LABORATORY|IARE10865|1212', 'CS|IARE10795|1305', 'MPMC|IARE10690|1305', 'EMI|IARE10953|1305'),
+('Electronics and Communication Engineering', 5, 'C', 'Thursday', 
+ 'EMI|IARE10953|1305', 'AWP|IARE10947|1305', 'MPMC|IARE10690|1305', 'WCN|IARE11103|1305', 'CS|IARE10795|1305', ''),
+('Electronics and Communication Engineering', 5, 'C', 'Friday', 
+ 'WCN|IARE11103|1305', 'EMI|IARE10953|1305', 'EMI|IARE10953|1305', 'MPMC|IARE10690|1305', 'CS|IARE10795|1305', 'AWP|IARE10947|1305'),
+('Electronics and Communication Engineering', 5, 'C', 'Saturday', 
+ 'CS|IARE10795|1305', 'WCN|IARE11103|1305', 'AWP|IARE10947|1305', 'VI LABORATORY|IARE10865|1212', '', ''),
+
+-- Section D
+('Electronics and Communication Engineering', 5, 'D', 'Monday', 
+ 'MPMC LABORATORY|IARE10950|1312B', 'WCN|IARE11103|1408', 'AWP|IARE10913|1408', 'CS|IARE11033|1408', '', ''),
+('Electronics and Communication Engineering', 5, 'D', 'Tuesday', 
+ 'MPMC|IARE10950|1305', 'CS|IARE11033|1305', 'EMI|IARE11103|1305', 'AWP|IARE10913|1408', 'WCN|IARE11103|1408', ''),
+('Electronics and Communication Engineering', 5, 'D', 'Wednesday', 
+ 'CS|IARE11033|1305', 'AWP|IARE10913|1305', 'EMI|IARE11103|1305', 'MPMC|IARE10950|1408', 'WCN|IARE11103|1408', 'LIBRARY|IARE11033|1408'),
+('Electronics and Communication Engineering', 5, 'D', 'Thursday', 
+ 'EMI|IARE11103|1408', 'WCN|IARE11103|1408', 'CS|IARE11033|1408', 'PBL|IARE11126|1212','PBL|IARE11126|1212','PBL|IARE11126|1212'),
+('Electronics and Communication Engineering', 5, 'D', 'Friday', 
+ 'MPMC|IARE10950|1408', 'CS|IARE11033|1408', 'AWP|IARE10913|1408', 'VI LABORATORY|IARE11103|1212','VI LABORATORY|IARE11103|1212','VI LABORATORY|IARE11103|1212'),
+('Electronics and Communication Engineering', 5, 'D', 'Saturday', 
+ 'EMI|IARE11103|1408', 'WCN|IARE11103|1408', 'MPMC|IARE10950|1408', 'AWP|IARE10913|1305', 'EMI|IARE11103|1408', 'SPORTS|IARE11040|1305');
+
+-- CS  
+
+INSERT INTO Class_Schedule (Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
+VALUES
+-- Section A
+('CSE (Cyber Security)', 5, 'A', 'Monday', 
+ 'NS|IARE11122|3208', 'NS LABORATORY|IARE10974|3405/3406', 'NS LABORATORY|IARE10974|3405/3406','OOSE|IARE10951|3208', 'NPM|IARE11118|3208', 'LIB|IARE11122|3208'),
+('CSE (Cyber Security)', 5, 'A', 'Tuesday', 
+ 'WAD|IARE11122|3208', 'NS|IARE11122|3208', 'NPM|IARE11118|3208', 'PLACEMENT AND TRAINING',  'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING'),
+('CSE (Cyber Security)', 5, 'A', 'Wednesday', 
+ 'WAD LABORATORY|IARE10974|3405/3406','WAD LABORATORY|IARE10974|3405/3406', 'TOC|IARE11045|3208', 'PLACEMENT AND TRAINING',  'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING'),
+('CSE (Cyber Security)', 5, 'A', 'Thursday', 
+ 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'NPM|IARE11118|3208', 'TOC|IARE11045|3208', 'OOSE|IARE10951|3208'),
+('CSE (Cyber Security)', 5, 'A', 'Friday', 
+ 'PBL LABORATORY|IARE10974|3405/3406', 'PBL LABORATORY|IARE10974|3405/3406','TOC|IARE11045|3208', 'WAD|IARE11122|3208', 'OOSE|IARE10951|3208', 'NS|IARE11122|3208'),
+('CSE (Cyber Security)', 5, 'A', 'Saturday', 
+ 'PLACEMENT AND TRAINING','PLACEMENT AND TRAINING','PLACEMENT AND TRAINING', 'WAD|IARE11122|3208', 'TOC|IARE11045|3208', 'NS|IARE11122|3208'),
+
+-- Section B
+('CSE (Cyber Security)', 5, 'B', 'Monday', 
+ 'TOC|IARE11104|5208', 'WAD|IARE11045|5208', 'OOSE|IARE10951|5208', 'PBL LABORATORY|IARE10899|3405/3406', 'PBL LABORATORY|IARE10899|3405/3406','PBL LABORATORY|IARE10899|3405/3406'),
+('CSE (Cyber Security)', 5, 'B', 'Tuesday', 
+ 'WAD LABORATORY|IARE10899|3405/3406','WAD LABORATORY|IARE10899|3405/3406','WAD LABORATORY|IARE10899|3405/3406', 'WAD|IARE11045|5208', 'NPM|IARE11118|5208', 'NS|IARE11045|5208'),
+('CSE (Cyber Security)', 5, 'B', 'Wednesday', 
+ 'TOC|IARE11104|5208', 'NS|IARE11045|5208', 'NPM|IARE11118|5208', 'NS LABORATORY|IARE10587|3405/3406', 'NS LABORATORY|IARE10587|3405/3406', 'NS LABORATORY|IARE10587|3405/3406'),
+('CSE (Cyber Security)', 5, 'B', 'Thursday', 
+ 'NS|IARE11045|5208', 'WAD|IARE11045|5208', 'TOC|IARE11104|5208', 'NPM|IARE11118|5208', 'OOSE|IARE10951|5208', 'LIBRARY|IARE10683|5208'),
+('CSE (Cyber Security)', 5, 'B', 'Friday', 
+ 'NPM|IARE11118|5208', 'OOSE|IARE10951|5208', 'NS|IARE11045|5208', 'NS|IARE11045|5208', 'PBL|IARRE10899|5208', 'WAD|IARE11045|5208'),
+('CSE (Cyber Security)', 5, 'B', 'Saturday', 
+ 'WAD|IARE11045|5208', 'NS|IARE11045|5208', 'NPM|IARE11118|5208', 'TOC|IARE11104|5208', 'OOSE|IARE10951|5208', 'LIBRARY|IARE10683|5208');
+
+-- AIML
+INSERT INTO Class_Schedule (Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
+VALUES
+-- Section A
+('CSE (AI & ML)', 5, 'A', 'Monday', 'ISP LABORATORY|IARE11022|3003A/3003B', 'ISP LABORATORY|IARE11022|3003A/3003B', 'ISP LABORATORY|IARE11022|3003A/3003B', 'ISP|IARE11022|3220', 'AIE|IARE11140|3220', 'CN|IARE10952|3220'),
+('CSE (AI & ML)', 5, 'A', 'Tuesday', 'ISP|IARE11022|3220', 'AIE|IARE11140|3220', 'CN|IARE10952|3220', 'PBL LABORATORY|IARE11097|3003A/3003B', 'PBL LABORATORY|IARE11097|3003A/3003B','PBL LABORATORY|IARE11097|3003A/3003B'),
+('CSE (AI & ML)', 5, 'A', 'Wednesday', 'CN|IARE10952|3220', 'CD|IARE11027|3220', 'AIE|IARE11140|3220', 'ISP|IARE11022|3220', 'SFD|IARE10779|3220', 'LIB/SPORTS|IARE11013|2101'),
+('CSE (AI & ML)', 5, 'A', 'Thursday', 'ISP|IARE11022|3220', 'SFD|IARE10779|3220', 'CD|IARE11027|3220', 'AIE|IARE11140|3220', 'CN|IARE10952|3220', 'ACC|IARE11013|3220'),
+('CSE (AI & ML)', 5, 'A', 'Friday', 'SFD|IARE10779|3220', 'SFD|IARE10779|3220', 'CD|IARE11027|3220', 'PIL LABORATORY|IARE11140|3003A/3003B', 'PIL LABORATORY|IARE11140|3003A/3003B',  'PIL LABORATORY|IARE11140|3003A/3003B'),
+('CSE (AI & ML)', 5, 'A', 'Saturday', 'CD|IARE11027|3220', 'CD|IARE11027|3220', 'ISP|IARE11022|3220', 'CN|IARE10952|3220', 'AIE|IARE11140|3220', 'SFD|IARE10779|3220'),
+
+-- Section B
+('CSE (AI & ML)', 5, 'B', 'Monday', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'AIE|IARE10944|3206', 'ISP LABORATORY|IARE10719|3003A/3003B', 'ISP LABORATORY|IARE10719|3003A/3003B'),
+('CSE (AI & ML)', 5, 'B', 'Tuesday', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'SFD|IARE11013|3206', 'CD|IARE10944|3206', 'CD|IARE10944|3206'),
+('CSE (AI & ML)', 5, 'B', 'Wednesday', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'CN|IARE11073|3217', 'PIL LABORATORY|IARE10960|3003A/3003B', 'PIL LABORATORY|IARE10960|3003A/3003B'),
+('CSE (AI & ML)', 5, 'B', 'Thursday', 'CN|IARE11073|3212', 'SFD|IARE11013|3212', 'CD|IARE10944|3212', 'AIE|IARE10944|3206', 'ISP|IARE10719|3206', 'ACC|IARE11013|3206'),
+('CSE (AI & ML)', 5, 'B', 'Friday', 'ISP|IARE10719|3212', 'ISP|IARE10719|3212', 'AIE|IARE10944|3212', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING'),
+('CSE (AI & ML)', 5, 'B', 'Saturday', 'CD|IARE10944|3217', 'CN|IARE11073|3217', 'SFD|IARE11013|3217', 'AIE|IARE10944|3212', 'PBL LABORATORY|IARE11013|3003A/3003B', 'PBL LABORATORY|IARE11013|3003A/3003B'),
+
+-- Section C
+('CSE (AI & ML)', 5, 'C', 'Monday', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'AIE|IARE10626|3217', 'CD|IARE11087|3217', 'SFD|IARE11079|3217'),
+('CSE (AI & ML)', 5, 'C', 'Tuesday', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'CN|IARE10952|3220', 'AIE|IARE10626|3220', 'CD|IARE11087|3220'),
+('CSE (AI & ML)', 5, 'C', 'Wednesday', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'CD|IARE11087|3217', 'AIE|IARE10626|3217', 'SFD|IARE11079|3217'),
+('CSE (AI & ML)', 5, 'C', 'Thursday', 'CD|IARE11087|3215', 'ISP LABORATORY|IARE11087|3003A/3003B', 'ISP LABORATORY|IARE11087|3003A/3003B', 'AIE|IARE10626|3217', 'ISP|IARE11087|3217', 'ACC|IARE11013|3220'),
+('CSE (AI & ML)', 5, 'C', 'Friday', 'CN|IARE10952|3215', 'PIL LABORATORY|IARE10626|3003A/3003B', 'PIL LABORATORY|IARE10626|3003A/3003B', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING', 'PLACEMENT AND TRAINING'),
+('CSE (AI & ML)', 5, 'C', 'Saturday', 'SFD|IARE11079|3217', 'PBL LABORATORY|IARE11079|3003A/3003B', 'PBL LABORATORY|IARE11079|3003A/3003B', 'ISP|IARE11087|3215', 'ISP|IARE11087|3215', 'CN|IARE10952|3215');
+
+-- DS
+
+INSERT INTO Class_Schedule 
+(Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
+VALUES
+-- Section A
+('CSE (Data Science)', 5 , 'A', 'Monday', 'IMA|GGR|3414', 'PBL LAB|VAK|3004', 'PBL LAB|VAK|3004','TOC|VAK|3414', 'DWP|RAN|3414', 'SE|YSJ|3414'),
+('CSE (Data Science)', 5 , 'A', 'Tuesday', 'SE|YSJ|3414', 'TOC|VAK|3414', 'TOC|VAK|3414', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('CSE (Data Science)', 5 , 'A', 'Wednesday', 'CN|DSV|3414', 'IMA|GGR|3414', 'TOC|VAK|3414', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('CSE (Data Science)', 5 , 'A', 'Thursday', 'Placement and Training', 'Placement and Training', 'Placement and Training', 'IMA|GGR|3414', 'DWP|RAN|3414', 'CN|DSV|3414'),
+('CSE (Data Science)', 5 , 'A', 'Friday', 'SE|YSJ|3414', 'CN|DSV|3414', 'IMA|GGR|3414', 'DWP|RAN|3414', 'DWV LAB|RAN|3004', 'DWV LAB|RAN|3004'),
+('CSE (Data Science)', 5 , 'A', 'Saturday', 'Placement and Training','Placement and Training','Placement and Training', 'OOS LAB|YSJ|3004', 'OOS LAB|YSJ|3004', 'Sports|YSJ/KVS|7009/3414'),
+
+-- Section B
+('CSE (Data Science)', 5 , 'B', 'Monday', 'IMA|MVK|3415', 'TOC|NLD|3415', 'SE|PAW|3415', 'DWP|JSS|3415', 'DWV LAB|JSS|3004', 'DWV LAB|JSS|3004'),
+('CSE (Data Science)', 5 , 'B', 'Tuesday', 'TOC|NLD|3415', 'PBL LAB|RAN|3004', 'PBL LAB|RAN|3004', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('CSE (Data Science)', 5 , 'B', 'Wednesday', 'CN|RTS|3415', 'OOS LAB|PAW|3004', 'OOS LAB|PAW|3004', 'Placement and Training', 'Placement and Training', 'Placement and Training'),
+('CSE (Data Science)', 5 , 'B', 'Thursday', 'Placement and Training', 'Placement and Training', 'Placement and Training', 'IMA|MVK|3415', 'DWP|JSS|3415', 'SE|PAW|3415'),
+('CSE (Data Science)', 5 , 'B', 'Friday', 'DWP|JSS|3415', 'IMA|MVK|3415', 'CN|RTS|3415', 'TOC|NLD|3415', 'TOC|NLD|3415', 'SE|PAW|3415'),
+('CSE (Data Science)', 5 , 'B', 'Saturday', 'Placement and Training','Placement and Training','Placement and Training', 'CN|RTS|3415', 'IMA|MVK|3415', 'Sports|JSS/KVS|7009/3415'),
+
+-- Section C
+('CSE (Data Science)', 5 , 'C', 'Monday', 'SE|NLM|5302', 'IMA|ANR|5302', 'DWP|MVK|5302', 'CN|GRK|5303', 'TOC|SSK|5303', 'TOC|SSK|5303'),
+('CSE (Data Science)', 5 , 'C', 'Tuesday', 'TOC|SSK|5302', 'DWP|MVK|5302', 'CN|GRK|5302', 'DWV LAB|MVK|3004', 'DWV LAB|MVK|3004', 'DWV LAB|MVK|3004'),
+('CSE (Data Science)', 5 , 'C', 'Wednesday', 'CN|GRK|3312', 'SE|NLM|3312', 'TOC|SSK|3312', 'DWP|MVK|3312', 'IMA|ANR|3312', 'Library|ANR/KVS|2101/3312'),
+('CSE (Data Science)', 5 , 'C', 'Thursday', 'TOC|SSK|5303', 'IMA|ANR|5303', 'SE|NLM|5303', 'PBL LAB|VAK|3004', 'PBL LAB|VAK|3004','PBL LAB|VAK|3004'),
+('CSE (Data Science)', 5 , 'C', 'Friday', 'OOS LAB|NLM|3004', 'OOS LAB|NLM|3004', 'OOS LAB|NLM|3004', 'IMA|ANR|5302', 'CN|GRK|5302', 'DWP|MVK|5302'),
+('CSE (Data Science)', 5 , 'C', 'Saturday', 'DWP|MVK|5303', 'IMA|ANR|5303', 'SE|NLM|5303', 'CN|GRK|3312', 'SE|NLM|3312', 'Sports|GRK/KVS|7009/3312');
+
+
+-- IT
+
+INSERT INTO Class_Schedule 
+(Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
+VALUES
+-- Section A
+('Information Technology', 5, 'A', 'Monday', 'CNS|IARE10590|1401', 'OOSE|IARE10827|1401', 'CD|IARE10671|1401', 'PBL LAB|IARE11030|1306/1415', 'PBL LAB|IARE11030|1306/1415', 'WAD|IARE10024|1401'),
+('Information Technology', 5, 'A', 'Tuesday', 'CD|IARE10671|1401', 'OOSE LAB|IARE10827|1416/1417/1417A','OOSE LAB|IARE10827|1416/1417/1417A', 'Placement and Training','Placement and Training','Placement and Training' ),
+('Information Technology', 5, 'A', 'Wednesday', 'OOSE|IARE10827|1401', 'FM|IARE10195|1401', 'WAD|IARE10024|1401', 'Placement and Training','Placement and Training','Placement and Training'),
+('Information Technology', 5, 'A', 'Thursday', 'Placement and Training','Placement and Training','Placement and Training', 'CNS|IARE10590|1401', 'CD|IARE10671|1401', 'WAD|IARE10024|1401'),
+('Information Technology', 5, 'A', 'Friday', 'WAD|IARE10024|1401', 'CD|IARE10671|1401', 'FM|IARE10195|1401', 'WAD LAB|IARE10024|1306', 'WAD LAB|IARE10024|1306', 'HCI|IARE10036|1401'),
+('Information Technology', 5, 'A', 'Saturday', 'Placement and Training', 'Placement and Training', 'Placement and Training', 'CNS|IARE10590|1401', 'FM|IARE10195|1401', 'OOSE|IARE10827|1401'),
+
+-- Section B
+('Information Technology', 5, 'B', 'Monday', 'CNS|IARE10669|1412', 'FM|IARE10195|1412', 'OOSE|IARE10827|1412', 'CD|IARE10671|1412', 'CD|IARE10671|1412', 'WAD|IARE10024|1412'),
+('Information Technology', 5, 'B', 'Tuesday', 'CD|IARE10671|1412', 'WAD LAB|IARE10024|1306', 'WAD LAB|IARE10024|1306', 'Placement and Training',  'Placement and Training', 'Placement and Training'),
+('Information Technology', 5, 'B', 'Wednesday', 'WAD|IARE10024|1412', 'OOSD LAB|IARE10827|1306',  'OOSD LAB|IARE10827|1306', 'Placement and Training','Placement and Training','Placement and Training'),
+('Information Technology', 5, 'B', 'Thursday', 'Placement and Training', 'Placement and Training', 'Placement and Training', 'WAD|IARE10024|1412', 'FM|IARE10195|1412', 'CD|IARE10671|1412'),
+('Information Technology', 5, 'B', 'Friday', 'FM|IARE10195|1412', 'PBL LAB|IARE11030|1306',  'PBL LAB|IARE11030|1306','CNS|IARE10669|1412', 'OOSE|IARE10827|1412', 'HCI|IARE10036|5308'),
+('Information Technology', 5, 'B', 'Saturday', 'Placement and Training','Placement and Training','Placement and Training', 'CNS|IARE10669|1412', 'OOSE|IARE10827|1412', 'WAD|IARE10024|1412');
+
+
+
+-- DROP TABLE Class_Schedule;#
+DESC Class_Schedule;
+
+SELECT DISTINCT Department FROM Class_Schedule ;
+
+SELECT * FROM Class_Schedule WHERE 
+	Department="Computer Science and Engineering" 
+    AND 
+    Section = 'B'
+    AND
+    Week_Day = 'Friday';
+
