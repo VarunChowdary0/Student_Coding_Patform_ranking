@@ -194,6 +194,87 @@ app.post("/delete-record", (req, res) => {
     });
 });
 
+const getDepartment = (rollNo) =>{
+    const sub = String(rollNo).substring(6,8);
+    switch (sub) {
+        case "05":
+          return "Computer Science and Engineering";
+        case "04":
+          return "Electronics and Communication Engineering";
+        case "03":
+          return "Mechanical Engineering";
+        case "12":
+          return "Information Technology";
+        case "21":
+          return "Aeronautical Engineering";
+        case "67":
+          return "CSE (Data Science)";
+        case "66":
+          return "CSE (AI & ML)";
+        case "62":
+          return "CSE (Cyber Security)";
+        case "33":
+            return "Computer Science and Information Technology"
+        default:
+          return "";
+      }
+}
+
+const  getWeekday = () => {
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = new Date();
+    return daysOfWeek[today.getDay()];
+  }
+  
+  
+
+app.post("/get-class", (req, res) => {
+    const { rollNo } = req.body; 
+    const day = getWeekday();
+    console.log("Route: '/get-class'");
+    if(day==='Sunday'){
+        res.sendStatus(500);
+    }
+    else{
+        const dept = getDepartment(rollNo);
+        if (!rollNo) {
+            return res.status(400).json({ data: "Roll number is required." });
+        }
+        turso.execute({
+            sql: "SELECT * FROM StudentDetails WHERE RollNumber = :rollNo;",
+            args: { rollNo: String(rollNo).toUpperCase() }
+        })
+        .then((data) => {
+            if(data.rows.length>0){
+                turso.execute({
+                    sql : "SELECT * FROM Class_Schedule WHERE Department = :branch AND Semester = :sem AND Section = :section AND Week_Day = :day; ",
+                    args : {branch:dept,sem:data.rows[0]['CurrentSem'],section:data.rows[0]['CurrentSection'],day:day}
+                })
+                    .then((res1)=>{
+                        const info = {
+                            Sname : data.rows[0]['SName'],
+                            data0 : res1.rows 
+                        }
+                        console.log(info);
+                        res.status(200).json({ data: info });
+                    })
+                    .catch((err)=>{
+                        console.log(err)
+                        res.status(500).json({ data: "Error occurred while fetching class details. INNER" });
+                    })
+            }
+            else{
+                res.status(200).json({ data: data.rows });
+            }
+        })
+        .catch((err) => {
+            console.error(err.message); 
+            res.status(500).json({ data: "Error occurred while fetching class details." });
+        });
+    }
+});
+
+
 
 
 app.listen(PORT,()=>{
