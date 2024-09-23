@@ -232,10 +232,11 @@ app.post("/get-class", (req, res) => {
     const { rollNo } = req.body; 
     const day = getWeekday();
     console.log("Route: '/get-class'");
-    if(day==='Sunday'){
+    if(day==='_Sunday'){
         res.sendStatus(500);
     }
     else{
+        const day = "Monday"; 
         const dept = getDepartment(rollNo);
         if (!rollNo) {
             return res.status(400).json({ data: "Roll number is required." });
