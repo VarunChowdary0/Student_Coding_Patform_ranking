@@ -262,7 +262,7 @@ app.post("/get-class", (req, res) => {
         res.sendStatus(500);
     }
     else{
-        const day = "Monday"; 
+        // const day = "Monday"; 
         const dept = getDepartment(rollNo);
         if (!rollNo) {
             return res.status(400).json({ data: "Roll number is required." });
