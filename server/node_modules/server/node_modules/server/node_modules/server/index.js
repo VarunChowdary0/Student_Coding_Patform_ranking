@@ -72,6 +72,32 @@ app.post("/get-placement-info",(req,res)=>{
         })
 })
 
+// app.post("/get-placement-info-ordered",(req,res)=>{
+//     console.log("Rout: '/get-placement-info-ordered'")
+//     console.log("-------------------------------------------------")
+//     const CompanyName = req.body.companyName;
+//     const Batch = req.body.Batch;
+//     console.log(CompanyName,Batch)
+//     const st1 = "SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE CompanyName = (:CompanyName) AND Pass_Out_Batch = (:Batch) ORDER BY Package;";
+//     const st2 = "SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE Pass_Out_Batch = (:Batch) ORDER BY Package;"
+
+//     const args1 ={CompanyName:CompanyName,Batch:Batch}    ;
+//     const args2 = {Batch:Batch}    ;
+//     turso.execute({
+//         sql: "ALLCOMPANIES"===String(CompanyName).toUpperCase()?st2:st1,
+//         args:"ALLCOMPANIES"===String(CompanyName).toUpperCase()?args2:args1
+//     })
+//     // turso.execute("SELECT RollNumber,StudentName,CompanyName,Package FROM PlacementsTable WHERE CompanyName='TCS' AND Pass_Out_Batch = 2024 ;")
+//         .then((data)=>{
+//             const outPut = (data.rows);
+//             res.status(200).json({data:outPut});
+//         })
+//         .catch((err)=>{
+//             console.log(err);
+//             res.status(500).json({error:err.message});
+//         })
+// })
+
 app.post("/get-details",(req,res)=>{
     console.log("Rout: '/get-details'")
     const CompanyName = req.body.companyName;

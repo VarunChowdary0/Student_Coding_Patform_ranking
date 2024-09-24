@@ -139,102 +139,22 @@ VALUES
 
 INSERT INTO Class_Schedule (Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
 VALUES
-('CSE (Cyber Security)', 3, 'A', 'Monday', 
-    'Operating Systems | IARE10947 | 3207', 
-    'Prototype and Design Building | IARE11045 | 3207', 
-    'Probability and Statistics | IARE10518 | 3207', 
-    'Essentials of Cyber Security | IARE10077 | 3207', 
-    'Data Structures | IARE10947 | 3207', 
-    'Computer System Architecture | IARE10791 | 3207'),
-
-('CSE (Cyber Security)', 3, 'A', 'Tuesday', 
-    'Programming with Objects Laboratory | IARE10974 | 3305/3306', 
-    'Operating Systems | IARE10947 | 3207', 
-    'Probability and Statistics | IARE10518 | 3207', 
-    'Data Structures | IARE10947 | 3207', 
-    NULL, NULL),
-
-('CSE (Cyber Security)', 3, 'A', 'Wednesday', 
-    'Computer System Architecture | IARE10791 | 3207', 
-    'Prototype and Design Building | IARE11045 | 3207', 
-    'Probability and Statistics | IARE10518 | 3207', 
-    'Operating Systems | IARE10947 | 3207', 
-    'Essentials of Cyber Security | IARE10077 | 3207', 
-    'Data Structures | IARE10947 | 3207'),
-
-('CSE (Cyber Security)', 3, 'A', 'Thursday', 
-    'Data Structures Laboratory | IARE11023 | 3305/3306', 
-    'Computer System Architecture | IARE10791 | 3207', 
-    'Data Structures | IARE10947 | 3207', 
-    'Essentials of Cyber Security | IARE10077 | 3207', 
-    NULL, NULL),
-
-('CSE (Cyber Security)', 3, 'A', 'Friday', 
-    'Operating Systems | IARE10947 | 3207', 
-    'Probability and Statistics | IARE10518 | 3207', 
-    'Essentials of Cyber Security | IARE10077 | 3207', 
-    'Operating Systems Laboratory | IARE10791 | 3405/3406', 
-    NULL, NULL),
-
-('CSE (Cyber Security)', 3, 'A', 'Saturday', 
-    'Operating Systems | IARE10947 | 3207', 
-    'Computer System Architecture | IARE10791 | 3207', 
-    'Probability and Statistics | IARE10518 | 3207', 
-    'Data Structures Laboratory | IARE11023 | 4002', 
-    NULL, NULL);
-
-
-INSERT INTO Class_Schedule (Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6)
-VALUES
-('CSE (Cyber Security)', 3, 'B', 'Monday', 
-    'Data Structures Laboratory | IARE10587 | 3305/3306', 
-    'Operating Systems | IARE10947 | 3208', 
-    'Essentials of Cyber Security | IARE10065 | 3208', 
-    'Computer System Architecture | IARE10791 | 3208', 
-    NULL, NULL),
-
-('CSE (Cyber Security)', 3, 'B', 'Tuesday', 
-    'Data Structures | IARE10705 | 3208', 
-    'Essentials of Cyber Security | IARE10065 | 3208', 
-    'Probability and Statistics | IARE10518 | 3208', 
-    'Data Structures Laboratory | IARE10587 | 4001', 
-    NULL, NULL),
-
-('CSE (Cyber Security)', 3, 'B', 'Wednesday', 
-    'Programming with Objects Laboratory | IARE10857 | 3405/3406', 
-    'Operating Systems | IARE10947 | 3208', 
-    'Computer System Architecture | IARE10791 | 3208', 
-    'Data Structures | IARE10705 | 3208', 
-    NULL, NULL),
-
-('CSE (Cyber Security)', 3, 'B', 'Thursday', 
-    'Operating Systems | IARE10947 | 3208', 
-    'Probability and Statistics | IARE10518 | 3208', 
-    'Data Structures | IARE10705 | 3208', 
-    'Computer System Architecture | IARE10791 | 3208', 
-    NULL, NULL),
-
-('CSE (Cyber Security)', 3, 'B', 'Friday', 
-    'Operating Systems Laboratory | IARE10947 | 3405/3406', 
-    'Prototype and Design Building | IARE10899 | 3208', 
-    'Essentials of Cyber Security | IARE10065 | 3208', 
-    'Probability and Statistics | IARE10518 | 3208', 
-    NULL, NULL),
-
-('CSE (Cyber Security)', 3, 'B', 'Saturday', 
-    'Operating Systems | IARE10947 | 3208', 
-    'Computer System Architecture | IARE10791 | 3208', 
-    'Prototype and Design Building | IARE10899 | 3208', 
-    'Probability and Statistics | IARE10518 | 3208', 
-    'Data Structures | IARE10705 | 3208', 
-    NULL);
-
-
-INSERT INTO Class_Schedule (Department, Semester, Section, Week_Day, Period1, Period2, Period3, Period4, Period5, Period6) VALUES 
-('CSE (Cyber Security)', 'III', 'C', 'Monday', 'Operating Systems | MDR | 3208', 'Computer System Architecture | BSK | 3208', 'Probability and Statistics | PSL | 3208', 'Data Structures Laboratory | SLC | 3305 / 3306', NULL, NULL),
-('CSE (Cyber Security)', 'III', 'C', 'Tuesday', 'Operating Systems | MDR | 3208', 'Essentials of Cyber Security | SS | 3208', 'Probability and Statistics | PSL | 3208', 'Computer System Architecture | BSK | 3208', 'Probability and Statistics | PSL | 3208', 'Prototype and Design Building | SKP | 3208'),
-('CSE (Cyber Security)', 'III', 'C', 'Wednesday', 'Data Structures | SLC | 3208', 'Operating Systems | MDR | 3208', 'Essentials of Cyber Security | SS | 3208', 'Probability and Statistics | PSL | 3208', 'Prototype and Design Building | SKP | 3208', 'Operating Systems | MDR | 3208'),
-('CSE (Cyber Security)', 'III', 'C', 'Thursday', 'Programming with Objects Laboratory | NS | 3305 / 3306', 'Data Structures | SLC | 3208', 'Essentials of Cyber Security | SS | 3208', 'Computer System Architecture | BSK | 3208', NULL, NULL),
-('CSE (Cyber Security)', 'III', 'C', 'Friday', 'Computer System Architecture | BSK | 3208', 'Operating Systems | MDR | 3208', 'Data Structures | SLC | 3208', 'Data Structures Laboratory | SLC | 4002', NULL, NULL),
-('CSE (Cyber Security)', 'III', 'C', 'Saturday', 'Essentials of Cyber Security | SS | 3208', 'Data Structures | SLC | 3208', 'Probability and Statistics | PSL | 3208', 'Operating Systems Laboratory | MDR | 3405 / 3406', NULL, NULL);
+('CSE (Cyber Security)', 3, 'A', 'Monday','Operating Systems | IARE10947 | 3207','Prototype and Design Building | IARE11045 | 3207','Probability and Statistics | IARE10518 | 3207','Essentials of Cyber Security | IARE10077 | 3207','Data Structures | IARE10947 | 3207','Computer System Architecture | IARE10791 | 3207'),
+('CSE (Cyber Security)', 3, 'A', 'Tuesday','Programming with Objects Laboratory | IARE10974 | 3305/3306','Programming with Objects Laboratory | IARE10974 | 3305/3306','Programming with Objects Laboratory | IARE10974 | 3305/3306','Operating Systems | IARE10947 | 3207','Probability and Statistics | IARE10518 | 3207','Data Structures | IARE10947 | 3207'),
+('CSE (Cyber Security)', 3, 'A', 'Wednesday','Computer System Architecture | IARE10791 | 3207','Prototype and Design Building | IARE11045 | 3207','Probability and Statistics | IARE10518 | 3207','Operating Systems | IARE10947 | 3207','Essentials of Cyber Security | IARE10077 | 3207','Data Structures | IARE10947 | 3207'),
+('CSE (Cyber Security)', 3, 'A', 'Thursday','Data Structures Laboratory | IARE11023 | 3305/3306','Data Structures Laboratory | IARE11023 | 3305/3306','Data Structures Laboratory | IARE11023 | 3305/3306','Computer System Architecture | IARE10791 | 3207','Data Structures | IARE10947 | 3207','Essentials of Cyber Security | IARE10077 | 3207'),
+('CSE (Cyber Security)', 3, 'A', 'Friday','Operating Systems | IARE10947 | 3207','Probability and Statistics | IARE10518 | 3207','Essentials of Cyber Security | IARE10077 | 3207','Operating Systems Laboratory | IARE10791 | 3405/3406','Operating Systems Laboratory | IARE10791 | 3405/3406','Operating Systems Laboratory | IARE10791 | 3405/3406'),
+('CSE (Cyber Security)', 3, 'A', 'Saturday','Operating Systems | IARE10947 | 3207','Computer System Architecture | IARE10791 | 3207','Probability and Statistics | IARE10518 | 3207','Data Structures Laboratory | IARE11023 | 4002','Data Structures Laboratory | IARE11023 | 4002','Data Structures Laboratory | IARE11023 | 4002'),
+('CSE (Cyber Security)', 3, 'B', 'Monday','Data Structures Laboratory | IARE10587 | 3305/3306','Data Structures Laboratory | IARE10587 | 3305/3306','Data Structures Laboratory | IARE10587 | 3305/3306','Operating Systems | IARE10947 | 3208','Essentials of Cyber Security | IARE10065 | 3208','Computer System Architecture | IARE10791 | 3208'),
+('CSE (Cyber Security)', 3, 'B', 'Tuesday','Data Structures | IARE10705 | 3208','Essentials of Cyber Security | IARE10065 | 3208','Probability and Statistics | IARE10518 | 3208','Data Structures Laboratory | IARE10587 | 4001','Data Structures Laboratory | IARE10587 | 4001','Data Structures Laboratory | IARE10587 | 4001'),
+('CSE (Cyber Security)', 3, 'B', 'Wednesday','Programming with Objects Laboratory | IARE10857 | 3405/3406','Programming with Objects Laboratory | IARE10857 | 3405/3406','Programming with Objects Laboratory | IARE10857 | 3405/3406','Operating Systems | IARE10947 | 3208','Computer System Architecture | IARE10791 | 3208','Data Structures | IARE10705 | 3208'),
+('CSE (Cyber Security)', 3, 'B', 'Thursday','Operating Systems | IARE10947 | 3208','Probability and Statistics | IARE10518 | 3208','Data Structures | IARE10705 | 3208','Computer System Architecture | IARE10791 | 3208','Probability and Statistics | IARE10518 | 3208','Essentials of Cyber Security | IARE10065 | 3208'),
+('CSE (Cyber Security)', 3, 'B', 'Friday','Operating Systems Laboratory | IARE10947 | 3405/3406','Operating Systems Laboratory | IARE10947 | 3405/3406','Operating Systems Laboratory | IARE10947 | 3405/3406','Prototype and Design Building | IARE10899 | 3208','Essentials of Cyber Security | IARE10065 | 3208','Probability and Statistics | IARE10518 | 3208'),
+('CSE (Cyber Security)', 3, 'B', 'Saturday','Operating Systems | IARE10947 | 3208','Computer System Architecture | IARE10791 | 3208','Prototype and Design Building | IARE10899 | 3208','Probability and Statistics | IARE10518 | 3208','Operating Systems | IARE10947 | 3208', 'Data Structures | IARE10705 | 3208'),
+('CSE (Cyber Security)', 3, 'C', 'Monday', 'Operating Systems | MDR | 3208', 'Computer System Architecture | BSK | 3208', 'Probability and Statistics | PSL | 3208', 'Data Structures Laboratory | SLC | 3305 / 3306', 'Data Structures Laboratory | SLC | 3305 / 3306', 'Data Structures Laboratory | SLC | 3305 / 3306'),
+('CSE (Cyber Security)', 3, 'C', 'Tuesday', 'Operating Systems | MDR | 3208', 'Essentials of Cyber Security | SS | 3208', 'Probability and Statistics | PSL | 3208', 'Computer System Architecture | BSK | 3208', 'Probability and Statistics | PSL | 3208', 'Prototype and Design Building | SKP | 3208'),
+('CSE (Cyber Security)', 3, 'C', 'Wednesday', 'Data Structures | SLC | 3208', 'Operating Systems | MDR | 3208', 'Essentials of Cyber Security | SS | 3208', 'Probability and Statistics | PSL | 3208', 'Prototype and Design Building | SKP | 3208', 'Operating Systems | MDR | 3208'),
+('CSE (Cyber Security)', 3, 'C', 'Thursday', 'Programming with Objects Laboratory | NS | 3305 / 3306','Programming with Objects Laboratory | NS | 3305 / 3306','Programming with Objects Laboratory | NS | 3305 / 3306', 'Data Structures | SLC | 3208', 'Essentials of Cyber Security | SS | 3208', 'Computer System Architecture | BSK | 3208'),
+('CSE (Cyber Security)', 3, 'C', 'Friday', 'Computer System Architecture | BSK | 3208', 'Operating Systems | MDR | 3208', 'Data Structures | SLC | 3208', 'Data Structures Laboratory | SLC | 4002', 'Data Structures Laboratory | SLC | 4002', 'Data Structures Laboratory | SLC | 4002'),
+('CSE (Cyber Security)', 3, 'C', 'Saturday', 'Essentials of Cyber Security | SS | 3208', 'Data Structures | SLC | 3208', 'Probability and Statistics | PSL | 3208', 'Operating Systems Laboratory | MDR | 3405 / 3406', 'Operating Systems Laboratory | MDR | 3405 / 3406', 'Operating Systems Laboratory | MDR | 3405 / 3406');
 
