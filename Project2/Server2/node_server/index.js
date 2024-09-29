@@ -1,8 +1,9 @@
 const axios = require('axios');
 const express = require('express');
-
 const url = "http://127.0.0.1:10001/";
 const app = express();
+
+const turso = require('./db/config')
 
 const get_CodeChef = (username) => {
     console.log("CodeChef");
@@ -11,7 +12,7 @@ const get_CodeChef = (username) => {
         .catch((err) => {
             console.error("Error fetching CodeChef data:", err);
             return {}; 
-        });
+        }); 
 };
 
 const get_LeetCode = (username) => {
@@ -45,19 +46,12 @@ const get_HackerRank = (username) => {
 };
 
 app.get("/", (req, res) => {
-    const usernames0 = {
+    const usernames = {
         leetcode: "varun_chowdary99",
         gfg: "saivarunchowdary",
         codechef: "varun9392",
         hackerrank: "saivarunchowdar2"
     };
-    const usernames = {
-        leetcode: "saicharan2005",
-        gfg: "kundurusa1up3",
-        codechef: "saicharan2701",
-        hackerrank: "kundurusaicharan"
-    };
-
     const leetcodePromise = get_LeetCode(usernames.leetcode);
     const codechefPromise = get_CodeChef(usernames.codechef);
     const hackerrankPromise = get_HackerRank(usernames.hackerrank);
@@ -66,10 +60,8 @@ app.get("/", (req, res) => {
     Promise.all([leetcodePromise, codechefPromise, hackerrankPromise, gfgPromise])
         .then((results) => {
             const studentData = {
-                name: "sai charan",
-                roll: "22951A05G1",
-                // name: "Polusasu Sai Varun",
-                // roll: "22951A05G8",
+                name: "Polusasu Sai Varun",
+                roll: "22951A05G8",
                 ScoreData: {
                     leetcode: results[0],
                     codechef: results[1],
@@ -87,6 +79,56 @@ app.get("/", (req, res) => {
         });
 });
 
+app.get("/a",(req,res)=>{
+    const usernames = {
+        leetcode: "saicharan2005",
+        gfg: "kundurusa1up3",
+        codechef: "saicharan2701",
+        hackerrank: "kundurusaicharan"
+    };
+
+    const leetcodePromise = get_LeetCode(usernames.leetcode);
+    const codechefPromise = get_CodeChef(usernames.codechef);
+    const hackerrankPromise = get_HackerRank(usernames.hackerrank);
+    const gfgPromise = get_GeekForGeeks(usernames.gfg);
+
+    Promise.all([leetcodePromise, codechefPromise, hackerrankPromise, gfgPromise])
+        .then((results) => {
+            const studentData = {
+                name: "sai charan",
+                roll: "22951A05G1",
+                department : "CSE",
+                ScoreData: {
+                    leetcode: results[0],
+                    codechef: results[1],
+                    hackerrank: results[2],
+                    geekforgeeks: results[3]
+                }
+            };
+
+            console.log(JSON.stringify(studentData));
+            res.status(200).json(studentData);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+            res.status(500).send("An error occurred while fetching data.");
+        });
+})
+
+app.get("/put_departments",(req,res)=>{
+    const data = {
+        departmentCode : "CSE",
+        departmentName : "Computer Science and Engineering"
+    };
+    turso.execute("DESC Departments;")
+        .then((respp)=>{
+            res.status(200).json(respp.rows);
+        })
+        .catch((eerr)=>{
+            console.log(eerr)
+            res.status(400).json(eerr);
+        })
+})
 app.listen(4300, () => {
     console.log("Server running on port", 4300);
 });

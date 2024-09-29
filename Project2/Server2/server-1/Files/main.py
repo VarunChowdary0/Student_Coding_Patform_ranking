@@ -89,12 +89,12 @@ class Scrapper():
             rank = soup.find("span", class_="educationDetails_head_left_userRankContainer--text__wt81s").b
             MyDict = {
                 "username": "",
-                "Rank": rank.text.strip('Rank') if rank else None
+                "Rank": int(rank.text.strip('Rank')) if rank else None
             }
             scores = soup.find_all('div', class_="scoreCard_head_left--score__oSi_x")
             if scores:
-                MyDict["score"] = scores[0].text.strip() if len(scores) > 0 else None
-                MyDict["problems_solved"] = scores[1].text.strip() if len(scores) > 1 else None
+                MyDict["score"] = int(scores[0].text.strip()) if len(scores) > 0 else None
+                MyDict["problems_solved"] = int(scores[1].text.strip()) if len(scores) > 1 else None
                 MyDict["contest_rating"] = scores[2].text.strip() if len(scores) > 2 else None
             college_res = soup.find('div', class_="educationDetails_head_left--text__tgi9I")
             MyDict['college'] = college_res.text.strip() if college_res else None
@@ -116,7 +116,7 @@ class Scrapper():
             }
             for i in res2:
                 if i.text.startswith("Total Problems Solved:"):
-                    myDict['problems-Solved'] = i.text.strip("Total Problems Solved:")
+                    myDict['problems-Solved'] = int(i.text.strip("Total Problems Solved:"))
                 if i.text.startswith("Contests"):
                     myDict['contests'] = int(i.text.strip().lstrip("Contests (").rstrip(')') )
 
@@ -135,7 +135,13 @@ class Scrapper():
             soup = BeautifulSoup(self.response.content,'html.parser')
             res = soup.find_all('div',class_='hacker-badge')
             myDct = {
-                        "badges":{},
+                        "badges":{
+                            "oneStarBadge": 0,
+                            "twoStarBadge": 0,
+                            "threeStarBadge": 0,
+                            "fourStarBadge": 0,
+                            "fiveStarBadge": 0
+                        },
                         "certificates":{
                             "basic" : 0,
                             "intermediate":0,
@@ -145,8 +151,18 @@ class Scrapper():
             for i in range(len(res)):
                 re0 = res[i].find('g',class_="star-section")
                 res2 = (re0.find_all('svg',class_="badge-star"))
-                myDct['badges'][f"badge-{i+1}"] = len(res2)
-            
+                # myDct['badges'][f"badge-{i+1}"] = len(res2)
+                if len(res2) == 1:
+                    myDct['badges']['oneStarBadge'] += 1
+                if len(res2) == 2:
+                    myDct['badges']['twoStarBadge'] += 1
+                if len(res2) == 3:
+                    myDct['badges']['threeStarBadge'] += 1
+                if len(res2) == 4:
+                    myDct['badges']['fourStarBadge'] += 1
+                if len(res2) == 5:
+                    myDct['badges']['fiveStarBadge'] += 1
+
             res = soup.find_all('a',class_="certificate-link hacker-certificate")
             print(len(res))
             for i in range(len(res)):

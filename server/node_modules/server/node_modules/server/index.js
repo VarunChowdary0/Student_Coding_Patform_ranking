@@ -34,6 +34,7 @@ VALUES
 ();
 `;
 
+
 app.get("/",(req,res)=>{
     console.log("Rout: '/'")
     turso.execute(`SELECT * FROM PlacementsTable`)
@@ -195,6 +196,34 @@ app.post("/insert-placements",(req,res)=>{
 
 })
 
+// const x = () =>{
+//     turso.execute("ALTER TABLE Class_Schedule ADD dayNumber INT;")
+//     .then((res)=>{
+//         turso.execute(`
+//             UPDATE Class_Schedule
+//                 SET dayNumber = CASE
+//                     WHEN Week_Day = 'Monday' THEN 1
+//                     WHEN Week_Day = 'Tuesday' THEN 2
+//                     WHEN Week_Day = 'Wednesday' THEN 3
+//                     WHEN Week_Day = 'Thursday' THEN 4
+//                     WHEN Week_Day = 'Friday' THEN 5
+//                     WHEN Week_Day = 'Saturday' THEN 6
+//                     ELSE NULL
+//                 END;
+//                 `)
+//                 .then((res2)=>{
+//                     console.log(res.rows);
+//                 })
+//                 .catch((err2)=>{
+//                     console.log(err2);
+//                 })
+//     })
+//     .catch((err)=>{
+//         console.log(err);
+//     })
+// }
+
+
 app.post("/delete-record", (req, res) => {
     console.log("Route: '/delete-record'");
     
@@ -258,7 +287,7 @@ app.post("/get-class", (req, res) => {
     const { rollNo } = req.body; 
     const day = getWeekday();
     console.log("Route: '/get-class'");
-    if(day==='_Sunday'){
+    if(day==='Sunday'){
         res.sendStatus(500);
     }
     else{
@@ -281,7 +310,8 @@ app.post("/get-class", (req, res) => {
                             Sname : data.rows[0]['SName'],
                             data0 : res1.rows 
                         }
-                        console.log(info);
+                        console.log(res1.rows);
+                        // console.log(info);
                         res.status(200).json({ data: info });
                     })
                     .catch((err)=>{
@@ -299,6 +329,72 @@ app.post("/get-class", (req, res) => {
         });
     }
 });
+
+
+app.post("/get-class-schedule", (req, res) => {
+    const { department, semester, section } = req.body;
+
+    turso.execute({
+        sql: "SELECT * FROM Class_Schedule WHERE Department = :branch AND Semester = :sem AND Section = :sec ORDER BY dayNumber",
+        args: { branch: department, sem: semester, sec: section }
+    })
+    .then((result) => {
+        res.status(200).json(result.rows);
+    })
+    .catch((error) => {
+        console.error("Error occurred while fetching class details:", error);
+        res.status(500).json({ message: "Error occurred while fetching class details." });
+    });
+});
+
+
+app.post("/update-time-table",(req,res)=>{
+    const { 
+        department,
+         semester,
+          section,
+        day,period1,
+        period2,
+        period3,
+        period4,
+        period5,
+        period6 } = req.body;
+
+    turso.execute({
+        sql :`
+        UPDATE Class_Schedule 
+        SET Period1 = :period1, 
+            Period2 = :period2, 
+            Period3 = :period3, 
+            Period4 = :period4, 
+            Period5 = :period5, 
+            Period6 = :period6 
+        WHERE Department = :department 
+          AND Semester = :semester 
+          AND Section = :section 
+          AND Week_Day = :day; `,
+        args : { department:department ,
+            semester : semester , 
+            section : section , 
+            day:day ,
+            period1:period1,
+            period2:period2,
+            period3:period3,
+            period4:period4,
+            period5:period5,
+            period6:period6
+        } 
+    })
+    .then((trqpp)=>{
+        console.log("Updated");
+        res.status(200).json({message:"Updated"});
+    })
+    .catch((err)=>{
+        console.log("Failed :",err);
+        res.status(400).json({message:"Failed to update"});
+    })
+
+})
 
 
 
