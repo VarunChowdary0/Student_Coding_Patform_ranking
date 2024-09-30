@@ -5,11 +5,13 @@ require('dotenv').config()
 const turso = require("./db/config.js");
 const app = express();
 const PORT = process.env.PORT || 1000 ;
+const morgan = require('morgan')
+
 
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
-
+app.use(morgan('dev'));
 
 const createTableStatement = `CREATE TABLE IF NOT EXISTS
                                 PlacementsTable (
@@ -36,7 +38,6 @@ VALUES
 
 
 app.get("/",(req,res)=>{
-    console.log("Rout: '/'")
     turso.execute(`SELECT * FROM PlacementsTable`)
         .then((data)=>{
             console.log(data.rows);
@@ -48,11 +49,8 @@ app.get("/",(req,res)=>{
 });
 
 app.post("/get-placement-info",(req,res)=>{
-    console.log("Rout: '/get-placement-info'")
-    console.log("-------------------------------------------------")
     const CompanyName = req.body.companyName;
     const Batch = req.body.Batch;
-    console.log(CompanyName,Batch)
     const st1 = "SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE CompanyName = (:CompanyName) AND Pass_Out_Batch = (:Batch) ;";
     const st2 = "SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE Pass_Out_Batch = (:Batch) ;"
 
@@ -73,31 +71,6 @@ app.post("/get-placement-info",(req,res)=>{
         })
 })
 
-// app.post("/get-placement-info-ordered",(req,res)=>{
-//     console.log("Rout: '/get-placement-info-ordered'")
-//     console.log("-------------------------------------------------")
-//     const CompanyName = req.body.companyName;
-//     const Batch = req.body.Batch;
-//     console.log(CompanyName,Batch)
-//     const st1 = "SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE CompanyName = (:CompanyName) AND Pass_Out_Batch = (:Batch) ORDER BY Package;";
-//     const st2 = "SELECT RollNumber AS rollNo,StudentName AS name,CompanyName AS companyName,Package AS package FROM PlacementsTable WHERE Pass_Out_Batch = (:Batch) ORDER BY Package;"
-
-//     const args1 ={CompanyName:CompanyName,Batch:Batch}    ;
-//     const args2 = {Batch:Batch}    ;
-//     turso.execute({
-//         sql: "ALLCOMPANIES"===String(CompanyName).toUpperCase()?st2:st1,
-//         args:"ALLCOMPANIES"===String(CompanyName).toUpperCase()?args2:args1
-//     })
-//     // turso.execute("SELECT RollNumber,StudentName,CompanyName,Package FROM PlacementsTable WHERE CompanyName='TCS' AND Pass_Out_Batch = 2024 ;")
-//         .then((data)=>{
-//             const outPut = (data.rows);
-//             res.status(200).json({data:outPut});
-//         })
-//         .catch((err)=>{
-//             console.log(err);
-//             res.status(500).json({error:err.message});
-//         })
-// })
 
 app.post("/get-details",(req,res)=>{
     console.log("Rout: '/get-details'")
@@ -109,7 +82,6 @@ app.post("/get-details",(req,res)=>{
     })
     .then((data)=>{
         const outPut = (data.rows);
-        console.log(outPut)
         res.status(200).json({data:outPut});
     })
     .catch((err)=>{
@@ -117,19 +89,15 @@ app.post("/get-details",(req,res)=>{
         res.status(500).json({error:err.message});
     })
 
-    console.log("------------------------------------------")
 })
 
 app.post("/get-companyNames",(req,res)=>{
     const Cname = req.body['Cname'];
-    // console.log(Cname)
-    console.log("Rout: '/get-companyNames'")
     turso.execute({
         sql: "SELECT DISTINCT CompanyName FROM PlacementsTable WHERE CompanyName LIKE :Cname",
         args: { Cname: `%${Cname}%` } 
     })
     .then((data)=>{
-        console.log(data.rows);
         res.status(200).json({data:data.rows});
     })
     .catch((err)=>{
@@ -142,10 +110,7 @@ app.post("/get-companyNames",(req,res)=>{
 
 
 app.post("/update-details", (req, res) => {
-    console.log("Rout: '/update-details'")
     const { companyName, rollNo, name, packageAmount } = req.body;
-
-    // console.log(companyName, rollNo, name, packageAmount);
 
     turso.execute({
         sql: `
@@ -172,7 +137,6 @@ app.post("/update-details", (req, res) => {
 });
 
 app.post("/insert-placements",(req,res)=>{
-    console.log("Rout: '/insert-placements'")
     const rollNo = req.body['rollNumber']
     const Sname = req.body['StudentName']
     const Cname = req.body['CompanyName']
@@ -196,36 +160,7 @@ app.post("/insert-placements",(req,res)=>{
 
 })
 
-// const x = () =>{
-//     turso.execute("ALTER TABLE Class_Schedule ADD dayNumber INT;")
-//     .then((res)=>{
-//         turso.execute(`
-//             UPDATE Class_Schedule
-//                 SET dayNumber = CASE
-//                     WHEN Week_Day = 'Monday' THEN 1
-//                     WHEN Week_Day = 'Tuesday' THEN 2
-//                     WHEN Week_Day = 'Wednesday' THEN 3
-//                     WHEN Week_Day = 'Thursday' THEN 4
-//                     WHEN Week_Day = 'Friday' THEN 5
-//                     WHEN Week_Day = 'Saturday' THEN 6
-//                     ELSE NULL
-//                 END;
-//                 `)
-//                 .then((res2)=>{
-//                     console.log(res.rows);
-//                 })
-//                 .catch((err2)=>{
-//                     console.log(err2);
-//                 })
-//     })
-//     .catch((err)=>{
-//         console.log(err);
-//     })
-// }
-
-
 app.post("/delete-record", (req, res) => {
-    console.log("Route: '/delete-record'");
     
     const { companyName: CompanyName, rollNo: rollNumber } = req.body;
 
@@ -286,7 +221,6 @@ const  getWeekday = () => {
 app.post("/get-class", (req, res) => {
     const { rollNo } = req.body; 
     const day = getWeekday();
-    console.log("Route: '/get-class'");
     if(day==='Sunday'){
         res.sendStatus(500);
     }
@@ -382,7 +316,79 @@ app.post("/update-time-table",(req,res)=>{
             period3:period3,
             period4:period4,
             period5:period5,
-            period6:period6
+            period6:period6,
+        } 
+    })
+    .then((trqpp)=>{
+        console.log("Updated");
+        res.status(200).json({message:"Updated"});
+    })
+    .catch((err)=>{
+        console.log("Failed :",err);
+        res.status(400).json({message:"Failed to update"});
+    })
+
+})
+
+app.get("/get-all-branches",(req,res)=>{
+    turso.execute("SELECT DISTINCT Department FROM Class_Schedule ;")
+    .then((resp)=>{
+        res.status(200).json(resp.rows);
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.status(400).json(err);
+    })
+})
+
+
+app.post("/insert-time-table",(req,res)=>{
+    const { 
+        department,
+         semester,
+          section,
+        day,period1,
+        period2,
+        period3,
+        period4,
+        period5,
+        period6 } = req.body;
+    
+    const dayNumber = day === 'Monday' ? 1 : 
+    day === 'Tuesday'? 2 :
+    day === 'Wednesday'?3:
+    day === 'Thursday'?4 :
+    day === 'Friday' ? 5 :
+    day === 'Saturday'?6 : 0 ;
+
+    console.log(dayNumber);
+
+    turso.execute({
+        sql :`
+        INSERT INTO Class_Schedule (Period1,Period2,Period3,Period4,Period5,Period6,
+                                    Department,Semester,Section,Week_Day,dayNumber)
+                            VALUES (:period1,
+                                    :period2, 
+                                    :period3, 
+                                    :period4, 
+                                    :period5, 
+                                    :period6,
+                                    :department, 
+                                    :semester, 
+                                    :section, 
+                                    :day,
+                                    :dayNumber ; `,
+        args : { department:department ,
+            semester : semester , 
+            section : section , 
+            day:day ,
+            period1:period1,
+            period2:period2,
+            period3:period3,
+            period4:period4,
+            period5:period5,
+            period6:period6,
+            dayNumber:dayNumber
         } 
     })
     .then((trqpp)=>{

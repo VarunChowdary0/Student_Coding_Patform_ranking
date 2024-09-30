@@ -84,9 +84,13 @@ class Scrapper():
             return jsonify({"error": "Error fetching the URL"}), 400
     
     def get_geekForGeeks(self):
+        print(self.url)
         if self.response.status_code == 200:
             soup = BeautifulSoup(self.response.content, 'html.parser')
-            rank = soup.find("span", class_="educationDetails_head_left_userRankContainer--text__wt81s").b
+            rank = soup.find("span", class_="educationDetails_head_left_userRankContainer--text__wt81s")
+            if rank:
+                rank = rank.b
+
             MyDict = {
                 "username": "",
                 "Rank": int(rank.text.strip('Rank')) if rank else None
@@ -105,6 +109,9 @@ class Scrapper():
                 MyDict['contest_rating'] = 0
 
             return MyDict
+        else:
+            print("Err")
+
         
     def get_CodeChef(self):
         if self.response.status_code == 200:
@@ -212,6 +219,7 @@ def test2():
     else:
         username = request.args.get("username").strip()    
     scrp = Scrapper("https://www.geeksforgeeks.org/user/"+username)
+    print(scrp.get_geekForGeeks())
     return scrp.get_geekForGeeks() or "Error Occured"
 
 @app.route("/test_url_cc",methods=['POST','GET'])

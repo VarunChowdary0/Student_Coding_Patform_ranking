@@ -114,6 +114,41 @@ app.get("/a",(req,res)=>{
             res.status(500).send("An error occurred while fetching data.");
         });
 })
+app.get("/c",(req,res)=>{
+    const usernames = {
+        leetcode: "chakrasai",
+        gfg: "chakrasnsi1",
+        codechef: "",
+        hackerrank: "chakrasaiaku"
+    };
+
+    const leetcodePromise = get_LeetCode(usernames.leetcode);
+    const codechefPromise = get_CodeChef(usernames.codechef);
+    const hackerrankPromise = get_HackerRank(usernames.hackerrank);
+    const gfgPromise = get_GeekForGeeks(usernames.gfg);
+
+    Promise.all([leetcodePromise, codechefPromise, hackerrankPromise, gfgPromise])
+        .then((results) => {
+            const studentData = {
+                name: "Chakra Sai",
+                roll: "22951A6623",
+                department : "CSE (AI & ML)",
+                ScoreData: {
+                    leetcode: results[0],
+                    codechef: results[1],
+                    hackerrank: results[2],
+                    geekforgeeks: results[3]
+                }
+            };
+
+            console.log(JSON.stringify(studentData));
+            res.status(200).json(studentData);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+            res.status(500).send("An error occurred while fetching data.");
+        });
+})
 
 app.get("/put_departments",(req,res)=>{
     const data = {
