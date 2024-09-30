@@ -113,7 +113,7 @@ class Scrapper():
             print("Err")
 
         
-    def get_CodeChef(self):
+    def get_CodeChef(self,username):
         if self.response.status_code == 200:
             soup = BeautifulSoup(self.response.content,'html.parser')
             res = soup.find("section",class_="rating-data-section problems-solved")
@@ -133,6 +133,8 @@ class Scrapper():
             res = soup.find('ul',class_="side-nav")
             re1 = res.find_all('li')
             myDict['username'] = re1[0].text.lstrip("\nUsername:").rstrip("\n").strip("7\u2605")
+
+            myDict['username'] = username
 
             return myDict
         
@@ -229,7 +231,7 @@ def test3():
     else:
         username = request.args.get("username").strip()
     scrp = Scrapper("https://www.codechef.com/users/"+username)
-    resp = scrp.get_CodeChef()
+    resp = scrp.get_CodeChef(username)
     return  resp or "Error Occured"
 
 

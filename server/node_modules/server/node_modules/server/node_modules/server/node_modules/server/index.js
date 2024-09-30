@@ -341,6 +341,22 @@ app.get("/get-all-branches",(req,res)=>{
     })
 })
 
+app.post("/get-all-dept-sems",(req,res)=>{
+    const { department } = req.body;
+    turso.execute({
+        sql :"SELECT DISTINCT Semester FROM Class_Schedule WHERE Department = :department ;",
+        args:{department:department}
+    })
+    .then((resp)=>{
+        console.log(resp.rows)
+        res.status(200).json(resp.rows);
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.status(400).json(err);
+    })
+})
+
 
 app.post("/insert-time-table",(req,res)=>{
     const { 
