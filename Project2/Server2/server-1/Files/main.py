@@ -71,8 +71,7 @@ class Scrapper():
     def eei(self):
         print("Scraping URL:", self.url)
         print("Response Status:", self.response.status_code)
-        soup = BeautifulSoup(self.response.content, 'html.parser')
-        print(soup.prettify()) 
+        soup = BeautifulSoup(self.response.content, 'html.parser') 
         return soup.prettify()
     
     def get_res(self):
@@ -140,6 +139,7 @@ class Scrapper():
         
 
     def get_HackerRank(self):
+        print(self.url)
         if self.response.status_code == 200:
             soup = BeautifulSoup(self.response.content,'html.parser')
             res = soup.find_all('div',class_='hacker-badge')
@@ -173,10 +173,10 @@ class Scrapper():
                     myDct['badges']['fiveStarBadge'] += 1
 
             res = soup.find_all('a',class_="certificate-link hacker-certificate")
-            print(len(res))
+            # print(len(res))
             for i in range(len(res)):
                 Basic = res[i].find_all("h2")
-                print(Basic)
+                # print(Basic)
                 for j in Basic:
                     j = (str(j.text).split(" "))
                     if "(Basic)" in j:
@@ -188,7 +188,7 @@ class Scrapper():
             name = soup.find('h1',class_="hr-heading-02 profile-title ellipsis")
             myDct['name'] = name.text
             userName = soup.find('p',class_="profile-username-heading hr-body-01 hr-m-t-0.25")
-            print(userName)
+            # print(userName)
             myDct['username'] = userName.text.strip("@")
             return myDct
 
